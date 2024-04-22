@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/data-structure.iml" filepath="$PROJECT_DIR$/data-structure.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dot/dot.iml" filepath="$PROJECT_DIR$/dot/dot.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sort-algo/sort-algo.iml" filepath="$PROJECT_DIR$/sort-algo/sort-algo.iml" />
+    </modules>
+  </component>
+</project>
