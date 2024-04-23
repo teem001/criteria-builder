@@ -8,17 +8,18 @@ public class Main {
 
         List<Double> amounts = List.of(30000D, 40000D, 2000D, 5000D, 15000D);
 
-        WithdrawLimit withdrawLimit = new WithdrawLimit(50000D);
+        Double sum = amounts.stream().reduce(Double::sum).get();
+
+        WithdrawLimit withdrawLimit = new WithdrawLimit("LIMIT_5000", new FrequencyCriteria<>(100000D, amounts, 3, Compare.GREATER_THAN), new Criteria<>(sum, Compare.GREATER_THAN, 900000D ));
 
 
-        withdrawLimit.setMinNumberOfTransaction(5);
+
 
         Map<Double, SingleCriteriaSpec> prop = new HashMap<>();
 
         prop.put(10000D, new SingleCriteriaSpec(3, CriteriaStatus.EACH));
         prop.put(90000D, new SingleCriteriaSpec(1,  CriteriaStatus.ONCE));
 
-        withdrawLimit.setProperties(prop);
 
         WithdrawLimitCriteria withdrawLimitCriteria = new WithdrawLimitCriteria(amounts, withdrawLimit);
 

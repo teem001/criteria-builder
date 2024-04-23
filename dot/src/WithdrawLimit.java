@@ -1,35 +1,38 @@
+import java.util.List;
 import java.util.Map;
 
 public class WithdrawLimit {
 
-    private final double amount;
+    private final String withdrawalLimitName;
 
-    private double minNumberOfTransaction;
-    private Map<Double, SingleCriteriaSpec> properties;
+    private final FrequencyCriteria<Double, List<Double>> frequencyCriteria;
 
-    public WithdrawLimit(double amount) {
-        this.amount = amount;
+    private final Criteria<Double> criteria;
+
+
+
+    public WithdrawLimit( String withdrawalLimitName, FrequencyCriteria<Double,
+            List<Double>> frequencyCriteria, Criteria<Double> criteria) {
+        this.withdrawalLimitName = withdrawalLimitName;
+        this.frequencyCriteria = frequencyCriteria;
+        this.criteria = criteria;
     }
 
 
-    public double getAmount() {
-        return amount;
+    public String getWithdrawalLimitName() {
+        return withdrawalLimitName;
     }
 
-    public double getMinNumberOfTransaction() {
-        return minNumberOfTransaction;
+    public FrequencyCriteria<Double, List<Double>> getFrequencyCriteria() {
+        return frequencyCriteria;
     }
 
-    public void setMinNumberOfTransaction(double minNumberOfTransaction) {
-        this.minNumberOfTransaction = minNumberOfTransaction;
+    public Criteria<Double> getCriteria() {
+        return criteria;
     }
 
-
-    public Map<Double, SingleCriteriaSpec> getProperties() {
-        return properties;
-    }
-
-    public void setProperties(Map<Double, SingleCriteriaSpec> properties) {
-        this.properties = properties;
+    public void validate() {
+        getCriteria().build();
+        getFrequencyCriteria().build();
     }
 }
