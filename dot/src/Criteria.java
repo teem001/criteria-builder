@@ -17,7 +17,7 @@ public class Criteria<T extends Comparable<T>> extends CriteriaValidator {
     public boolean build(){
         int compareValue = value.compareTo(result);
         var value = compare.getCompareValue() == compareValue;
-        if(!value) super.addReasonForInvalidation(String.format("The expect value of  %s is not equal or greater to the actual %s", this.value, result ));
+        if(!value) super.addReasonForInvalidation(String.format("The expect value of  %s does not match the comparison with the actual %s", this.value, result ));
         return value;
     }
 

@@ -1,26 +1,23 @@
 import java.util.List;
-import java.util.Map;
 
 public class WithdrawLimit {
 
-    private final String withdrawalLimitName;
-
+    private final WithdrawLimitEntity withdrawLimitEntity;
     private final FrequencyCriteria<Double, List<Double>> frequencyCriteria;
 
     private final Criteria<Double> criteria;
 
 
-
-    public WithdrawLimit( String withdrawalLimitName, FrequencyCriteria<Double,
+    public WithdrawLimit( WithdrawLimitEntity withdrawLimitEntity, FrequencyCriteria<Double,
             List<Double>> frequencyCriteria, Criteria<Double> criteria) {
-        this.withdrawalLimitName = withdrawalLimitName;
+        this.withdrawLimitEntity = withdrawLimitEntity;
         this.frequencyCriteria = frequencyCriteria;
         this.criteria = criteria;
     }
 
 
-    public String getWithdrawalLimitName() {
-        return withdrawalLimitName;
+    public WithdrawLimitEntity getWithdrawLimitEntity() {
+        return withdrawLimitEntity;
     }
 
     public FrequencyCriteria<Double, List<Double>> getFrequencyCriteria() {
@@ -32,7 +29,10 @@ public class WithdrawLimit {
     }
 
     public void validate() {
-        getCriteria().build();
-        getFrequencyCriteria().build();
+        if (getCriteria() != null)
+            getCriteria().build();
+
+        if (getFrequencyCriteria() != null)
+            getFrequencyCriteria().build();
     }
 }
